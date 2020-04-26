@@ -1,5 +1,5 @@
 <div class="modal-header">
- <h4 class="modal-title">Create Todo</h4>
+ <h2 class="modal-title">{{createMode ? 'Agregar Item' : 'Modificar Item'}}</h2>
 
  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
    <span aria-hidden="true">&times;</span>
@@ -9,28 +9,26 @@
 <div class="modal-body">
  <form [formGroup]="todoForm" (ngSubmit)="saveTodo()">
    <div class="form-group">
-     <label for="title">Title*</label>
-     <input type="text" id="title" placeholder="Title" class="form-control" formControlName="title" />
-     <span style="color:Red;" *ngIf="todoForm.controls['title'].touched && todoForm.controls['title'].errors?.required">Title
-       is required.</span>
+     <label for="title">Título*</label>
+     <input type="text" id="title" placeholder="Título" class="form-control" formControlName="title" />
+     <span style="color:Red;" *ngIf="todoForm.controls['title'].touched && todoForm.controls['title'].errors?.required">Título es requerido.</span>
    </div>
    <div class="form-group">
-     <label for="description">Description*</label>
-     <textarea  id="description" placeholder="Description" class="form-control" formControlName="description"></textarea>
-     <span style="color:rgb(238, 235, 235);" *ngIf="todoForm.controls['description'].touched && todoForm.controls['description'].errors?.required">Description
-       is required.</span>
+     <label for="description">Descripción*</label>
+     <textarea  id="description" placeholder="Descripción" class="form-control" formControlName="description"></textarea>
+     <span style="color:Red;" *ngIf="todoForm.controls['description'].touched && todoForm.controls['description'].errors?.required">Descripción es requerido.</span>
    </div>
 
    <div class="form-check">
      <input class="form-check-input" type="checkbox" value="" id="done" formControlName="done">
      <label class="form-check-label" for="done">
-       Done
+       Hecho
      </label>
    </div>
  </form>
 </div>
 
 <div class="modal-footer">
- <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
- <button class="btn btn-primary" (click)="saveTodo()" [disabled]="todoForm.invalid">Save</button>
+ <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+ <button class="btn btn-primary" (click)="saveTodo()" [disabled]="todoForm.invalid">Guardar</button>
 </div>
